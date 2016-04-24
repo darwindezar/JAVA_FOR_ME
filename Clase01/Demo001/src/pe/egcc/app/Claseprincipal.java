@@ -1,6 +1,8 @@
 
 package pe.egcc.app;
 
+import pe.egcc.app.view.Sumaview;
+
 public class Claseprincipal {
 
     /**
@@ -8,7 +10,7 @@ public class Claseprincipal {
      */
     public static void main(String[] args)
     {
-       
+        Sumaview.main(null);
     }
     
 }

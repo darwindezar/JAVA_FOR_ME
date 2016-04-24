@@ -5,6 +5,10 @@
  */
 package pe.egcc.app.view;
 
+import com.sun.jmx.snmp.BerDecoder;
+import javax.swing.JOptionPane;
+import pe.egcc.app.service.MateService;
+
 /**
  *
  * @author Alumno
@@ -27,21 +31,75 @@ public class Sumaview extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_Num1 = new javax.swing.JLabel();
+        lbl_Num2 = new javax.swing.JLabel();
+        txt_Num1 = new javax.swing.JTextField();
+        txt_Num2 = new javax.swing.JTextField();
+        btn_Procesar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lbl_Num1.setText("Número 1:");
+
+        lbl_Num2.setText("Número 2:");
+
+        btn_Procesar.setText("Procesar");
+        btn_Procesar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ProcesarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbl_Num1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txt_Num1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbl_Num2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txt_Num2)))
+                    .addComponent(btn_Procesar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Num1)
+                    .addComponent(txt_Num1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Num2)
+                    .addComponent(txt_Num2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_Procesar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ProcesarActionPerformed
+        
+        int n1 = Integer.parseInt(txt_Num1.getText());
+        int n2 = Integer.parseInt(txt_Num2.getText());
+        
+        MateService service = new MateService();
+        
+        int suma = service.sumar(n1, n2);
+        //reporte
+        String repo = "Suma: " + suma;
+        JOptionPane.showMessageDialog(rootPane, repo);
+    }//GEN-LAST:event_btn_ProcesarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +137,10 @@ public class Sumaview extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Procesar;
+    private javax.swing.JLabel lbl_Num1;
+    private javax.swing.JLabel lbl_Num2;
+    private javax.swing.JTextField txt_Num1;
+    private javax.swing.JTextField txt_Num2;
     // End of variables declaration//GEN-END:variables
 }
